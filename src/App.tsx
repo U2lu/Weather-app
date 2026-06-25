@@ -2,12 +2,17 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import WeatherDetails from "./components/WeatherDetails";
 import WeatherPanel from "./components/WeatherPanel";
+import { getWeatherData } from "./services/api";
 
 function App() {
   const [city, setCity] = useState("");
 
-  const handleSubmit = () => {
-    console.log(city);
+  const [weatherData, setWeatherData] = useState(null);
+
+  const handleSubmit = async () => {
+    const data = await getWeatherData(city);
+    setWeatherData(data);
+    console.log(weatherData);
   };
 
   return (
@@ -15,7 +20,7 @@ function App() {
       <div className="w-2/3 font-extrabold">
         <WeatherPanel
           city={city}
-          temperature={25}
+          temperature={weatherData?.main?.temp}
           condition="Cloudy"
           date="24th, June 2026"
         />
