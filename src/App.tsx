@@ -3,11 +3,12 @@ import SearchBar from "./components/SearchBar";
 import WeatherDetails from "./components/WeatherDetails";
 import WeatherPanel from "./components/WeatherPanel";
 import { getWeatherData } from "./services/api";
+import type { WeatherData } from "./types/weather";
 
 function App() {
   const [city, setCity] = useState("");
 
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<null|WeatherData>(null);
 
   const handleSubmit = async () => {
     const data = await getWeatherData(city);
@@ -19,7 +20,7 @@ function App() {
     <div className="flex h-screen bg-blue-400 text-white">
       <div className="w-2/3 font-extrabold">
         <WeatherPanel
-          city={city}
+          city={weatherData?.name}
           temperature={weatherData?.main?.temp}
           condition="Cloudy"
           date="24th, June 2026"
