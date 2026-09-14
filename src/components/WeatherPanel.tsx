@@ -1,5 +1,5 @@
 type WeatherPanelProps = {
-  temperature: ;
+  temperature: number | string;
   city: string;
   condition: string;
   date: string;
