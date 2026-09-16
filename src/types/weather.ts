@@ -9,10 +9,23 @@ type Wind = {
   speed: number;
 };
 
-type WeatherCondition = {
+export type WeatherCondition = {
   main: string;
   description: string;
   icon: string;
+};
+
+type ForecastItem = {
+  dt: number;
+  dt_txt: string;
+  main: {
+    temp: number;
+  };
+  weather: WeatherCondition[];
+};
+
+export type ForecastData = {
+  list: ForecastItem[];
 };
 
 export type WeatherData = {
