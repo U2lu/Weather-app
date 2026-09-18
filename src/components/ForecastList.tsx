@@ -18,17 +18,29 @@ const ForecastList = ({ forecastData }: ForecastListProps) => {
     );
   });
 
-  return( 
-    <div>
-      <h2>5 Day Forecast</h2>
-
-      {dailyForecast.slice(0, 5).map((day) => (
-        <div key={day.dt}>
-          <p>{day.dt_txt.split(" ")[0]}</p>
-          <p>{day.main.temp}°C</p>
-          <p>{day.weather[0].main}</p>
-        </div>
-      ))}
+  return (
+    <div className="w-full p-4">
+      <h2 className="text-xl font-bold mb-4">5 Day Forecast</h2>
+      <div className="flex flex-col gap-3">
+        {dailyForecast.slice(0, 5).map((day) => (
+          <div
+            key={day.dt}
+            className="flex justify-between items-center bg-white/20 p-4 rounded-xl shadow-md"
+          >
+            <p>
+              {new Date(day.dt_txt).toLocaleDateString("en-US", {
+                weekday: "long",
+              })}
+            </p>
+            <img
+              src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+              alt={day.weather[0].description}
+            />
+            <p>{Math.round(day.main.temp)}°C</p>
+            <p>{day.weather[0].main}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
