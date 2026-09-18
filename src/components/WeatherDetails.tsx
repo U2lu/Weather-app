@@ -15,7 +15,7 @@ const WeatherDetails = ({
     <div className="flex flex-col gap-6 items-center p-4">
       <p className="text-xl font-bold">Weather Details</p>
       <p className="text-lg">Humidity: {humidity}%</p>
-      <p className="text-lg">WInd Speed: {wind_speed}km/h</p>
+      <p className="text-lg">Wind Speed: {wind_speed} m/s</p>
       <p className="text-lg">Max Temp: {max_temp}°</p>
       <p className="text-lg">Min Temp: {min_temp}°</p>
     </div>
