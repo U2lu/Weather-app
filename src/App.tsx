@@ -15,7 +15,6 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
-  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -24,8 +23,6 @@ function App() {
       const forecast = await getForecastData(city);
       setWeatherData(data);
       setForecastData(forecast);
-      console.log(data);
-      console.log(forecast);
     } catch (error) {
       console.log("Failed to fetch weather data");
     } finally {
@@ -34,7 +31,7 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-blue-400 text-white">
+    <div className="flex min-h-screen bg-[url('/src/assets/1.jpg')] bg-cover text-white">
       <div className="w-2/3 font-extrabold">
         <WeatherPanel
           city={weatherData?.name ?? "--"}
@@ -50,7 +47,7 @@ function App() {
         />
       </div>
 
-      <div className="w-1/3 items-center flex flex-col outline">
+      <div className="w-1/3 items-center flex flex-col bg-white/8 backdrop-blur-xs">
         <SearchBar city={city} setCity={setCity} onSubmit={handleSubmit} />
         {loading ? (
           <p>Loading...</p>
