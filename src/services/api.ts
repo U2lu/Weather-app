@@ -17,7 +17,7 @@ export const getWeatherData = async (city: string): Promise<WeatherData> => {
 
 export const getForecastData = async (city: string): Promise<ForecastData> => {
   const response = await fetch(
-    `${BASE_URL}?q=${city}&appid=${API_KEY}&units=metric`,
+    `${FORECAST_URL}?q=${city}&appid=${API_KEY}&units=metric`,
   );
   if (!response.ok) {
     throw new Error("Could not fetch forecast");
