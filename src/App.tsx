@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import WeatherDetails from "./components/WeatherDetails";
 import WeatherPanel from "./components/WeatherPanel";
+import ForecastList from "./components/ForecastList";
 import { getWeatherData, getForecastData } from "./services/api";
 import type { WeatherData, ForecastData } from "./types/weather";
 
@@ -54,12 +55,16 @@ function App() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <WeatherDetails
-            humidity={weatherData?.main?.humidity ?? 0}
-            wind_speed={weatherData?.wind?.speed ?? 0}
-            max_temp={weatherData?.main?.temp_max ?? 0}
-            min_temp={weatherData?.main?.temp_min ?? 0}
-          />
+          <>
+            <WeatherDetails
+              humidity={weatherData?.main?.humidity ?? 0}
+              wind_speed={weatherData?.wind?.speed ?? 0}
+              max_temp={weatherData?.main?.temp_max ?? 0}
+              min_temp={weatherData?.main?.temp_min ?? 0}
+            />
+            
+            <ForecastList forecastData={forecastData} />
+          </>
         )}
         {/* <button onClick={() => setcity("Abuja")} className="bg-black">Button</button> (I was testing usestate here)*/}
       </div>
