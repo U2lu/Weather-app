@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+@theme {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #020617;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  a,
+  input {
+    touch-action: manipulation;
+  }
+}
+
+::selection {
+  background-color: rgb(125 211 252 / 0.35);
+  color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .content-enter {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 240ms var(--ease-out),
+      transform 240ms var(--ease-out);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+}
